@@ -1,0 +1,49 @@
+IOD - Mini Project 3 - Sam O'Brien
+This file is a guide explaining the steps to launch an AWS-EC2 Instance.
+
+Primary Steps:
+
+1. Create a new key pair
+2. Launch a Web Server Instance
+3. Connect to your linux instance
+4. Install NPM & NodeJS
+
+Breakdown: 
+
+1. Create a new key pair: 
+
+    * Access AWS management console, selecting nearest region. 
+    * Under Network & Security > Key Pairs > Select 'Create key Pair' 
+        * Name: sam-immersionDay
+        * Format: pem (Mac)
+
+2. Launch web server instance (Amazon Linux 2 EC2):
+
+    * Access EC2 Dashboard
+    * Click 'Launch Instance' 
+        * Enter Name (Sam Web Server)
+        * Select the Amazon Linux AMI instance (or whatever instance is desired for your project)
+        * Instance Type: t2.micro
+        * Key pair: sam-immersionDay
+        * Network Settings: 
+            * Allow SSH traffic from My IP
+            * Tick Allow HTTPs traffic
+            * Tick Allow HTTP traffic
+        * Advanced Details: 
+            * User data: https://catalog.us-east-1.prod.workshops.aws/workshops/f3a3e2bd-e1d5-49de-b8e6-dac361842e76/en-US/basic-modules/10-ec2/ec2-linux/2-ec2
+        * Select 'Launch Instance'
+    * Visit the Public IPv4 DNS Address once the status checks have finished (if it doesn't load try http instead of https)
+
+3. Connect to your Linux instance: 
+
+    * Select the instance and click 'Connect' at top of console. 
+    * Select SSH Client
+    * Open VS Code and search: `Remote-SSH: Connect to Host`
+        * Enter: ssh -i /Users/samobrien/Downloads/sam-immersionDay.pem ec2-user@ec2-3-25-103-15.ap-southeast-2.compute.amazonaws.com
+        * Select SSH Configuration File. 
+        * Successfully connect to the instance. 
+
+
+
+            
+
